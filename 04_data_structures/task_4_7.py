@@ -9,3 +9,6 @@
 '''
 
 MAC = 'AAAA:BBBB:CCCC'
+maclist = MAC.lower().split(":")
+binmac = bin(int("".join(maclist),16))
+print(str(binmac)[2:])
