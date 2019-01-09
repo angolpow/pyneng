@@ -19,3 +19,17 @@
 '''
 
 IP = '192.168.3.1'
+IP = IP.split(".")
+IP = [int(IP[i]) for i in range(4)]
+"""
+string = ""
+string2 = ""
+for i in range(4):
+    string = string + "{:<10}".format(IP[i])
+for i in range(4):
+    string2 = string2 + "{:08b}  ".format(IP[i])
+print(string)
+print(string2)
+"""
+print("{oct[0]:<10}{oct[1]:<10}{oct[2]:<10}{oct[3]:<10}".format(oct = IP))
+print("{oct[0]:08b}  {oct[1]:08b}  {oct[2]:08b}  {oct[3]:08b}  ".format(oct = IP))
