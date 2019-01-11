@@ -30,8 +30,10 @@ print("{oct[0]:<10}{oct[1]:<10}{oct[2]:<10}{oct[3]:<10}".format(oct = IP))
 print("{oct[0]:08b}  {oct[1]:08b}  {oct[2]:08b}  {oct[3]:08b}  ".format(oct = IP))
 print()
 print('Mask:')
-print('/{}'.format(datalist[-1])
+print('/{}'.format(datalist[-1]))
 mask_str = '1' * mask + '0' * ( 32 - mask )
-
-
-
+#print(mask_str)
+mask_list = [ int(mask_str[0:8], 2), int(mask_str[8:16], 2), int(mask_str[16:24], 2), int(mask_str[24:], 2) ]
+#print(mask_list)
+print("{oct[0]:<10}{oct[1]:<10}{oct[2]:<10}{oct[3]:<10}".format(oct = mask_list))
+print("{oct[0]:08b}  {oct[1]:08b}  {oct[2]:08b}  {oct[3]:08b}  ".format(oct = mask_list))
