@@ -43,3 +43,8 @@ london_co = {
         'routing': True
     }
 }
+
+NAME = input('Enter device name: ')
+PARAM_LIST = ', '.join(list(london_co.get(NAME)))
+PARAM = input('Enter parameter ({}): '.format(PARAM_LIST))
+print(london_co.get(NAME).get(PARAM.lower(), 'Такого параметра нет'))

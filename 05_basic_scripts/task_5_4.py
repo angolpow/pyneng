@@ -17,3 +17,14 @@ num_list = [10, 2, 30, 100, 10, 50, 11, 30, 15, 7]
 word_list = [
     'python', 'ruby', 'perl', 'ruby', 'perl', 'python', 'ruby', 'perl'
 ]
+
+#num_list.reverse()
+#word_list.reverse()
+
+NUM = input("Num: ")
+RESULT = 10 - num_list[::-1].index(int(NUM))
+print(RESULT)
+
+WORD = input("Word: ")
+RESULT = 8 - word_list[::-1].index(WORD)
+print(RESULT)
