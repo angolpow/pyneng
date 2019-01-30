@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Задание 7.3
@@ -21,5 +22,6 @@
 
 with open('CAM_table.txt') as data:
     for string in data:
-        line_in_list = data.strip().replace("DYNAMIC"," ").split()
-        print(' {i[0]:7}{i[1]:17}{i[2]}'.format(i = line_in_list))
+        if string.count('.') == 2: 
+            line_in_list = string.strip().replace("DYNAMIC"," ").split()
+            print(' {i[0]:7}{i[1]:17}{i[2]}'.format(i = line_in_list))
