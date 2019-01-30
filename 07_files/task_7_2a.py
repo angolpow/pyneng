@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Задание 7.2a
@@ -13,3 +14,17 @@
 '''
 
 ignore = ['duplex', 'alias', 'Current configuration']
+
+from sys import argv
+
+file = open(argv[1])
+data = file.read().rstrip().split('\n')
+for string in data:
+    test = False
+    for ign in ignore:
+        if ign in string:
+            test = True
+            break
+    if not string.startswith('!') and not test:
+        print(string)
+

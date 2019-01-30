@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Задание 7.2b
@@ -14,3 +15,15 @@
 '''
 
 ignore = ['duplex', 'alias', 'Current configuration']
+
+from sys import argv
+
+with open(argv[1]) as data, open('config_sw1_cleared.txt', 'w') as dest:
+    for string in data:
+        test = False
+        for ign in ignore:
+            if ign in string:
+                test = True
+                break
+        if not test:
+            dest.write(string)

@@ -18,3 +18,8 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 '''
+
+with open('CAM_table.txt') as data:
+    for string in data:
+        line_in_list = data.strip().replace("DYNAMIC"," ").split()
+        print(' {i[0]:7}{i[1]:17}{i[2]}'.format(i = line_in_list))
