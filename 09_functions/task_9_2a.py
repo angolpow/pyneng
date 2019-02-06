@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Задание 9.2a
@@ -32,9 +33,20 @@ def generate_trunk_config(trunk):
         'switchport trunk native vlan 999', 'switchport trunk allowed vlan'
     ]
 
+    result = {}
+    for intf, *vlan in trunk.items():
+        result[intf] = []
+        for line in trunk_template:
+            if line.endswith('vlan'):
+                result[intf].append(line + ' ' + str(vlan).strip('[').strip(']'))
+            else:
+                result[intf].append(line)
+    return(result)
 
 trunk_dict = {
     'FastEthernet0/1': [10, 20, 30],
     'FastEthernet0/2': [11, 30],
     'FastEthernet0/4': [17]
 }
+
+print(generate_trunk_config(trunk_dict))

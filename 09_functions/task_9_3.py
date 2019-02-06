@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Задание 9.3
@@ -21,3 +22,21 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 '''
+
+def get_int_vlan_map(fname):
+    ''''''
+    with open(fname) as file:
+        result_access = {}
+        result_trunk = {}
+        for line in file:
+            if line.startswith('interface'):
+                intf = line.split()[-1]
+            elif 'access vlan' in line:
+                vlan = line.split()[-1]
+                result_access[intf] = int(vlan)
+            elif 'trunk allowed' in line:
+                result_trunk[intf] = [ int(i) for i in line.split()[-1].split(',') ]
+        return(result_access,result_trunk)
+
+print(get_int_vlan_map('config_sw1.txt'))
+

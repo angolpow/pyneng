@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Задание 9.4
@@ -36,3 +37,20 @@ def ignore_command(command, ignore):
     * False - если нет
     '''
     return any(word in command for word in ignore)
+
+def config_to_list(fname):
+    ''''''
+    with open(fname) as file:
+        result = {}
+        for line in file:
+            if not ignore_command(line,ignore) and not line.startswith('!'):
+                if not line.startswith(' '):
+                    command = line.strip()
+                    result[command] = []
+                else:
+                    result[command].append( line.strip() )
+    return(result)
+
+print(config_to_list('config_sw1.txt'))
+
+
