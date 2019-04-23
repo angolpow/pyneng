@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Задание 9.4a
@@ -49,3 +50,28 @@ def check_ignore(command, ignore):
 
     '''
     return any(word in command for word in ignore)
+
+def config_to_list(fname):
+    ''''''
+    with open(fname) as file:
+        result = {}
+        dic23 = {}
+        for line in file:
+            if not check_ignore(line,ignore) and not line.startswith('!'):
+                if not line.startswith(' '):
+                    commandl1 = line.strip()
+                    result[commandl1] = {}
+                elif not line.startswith('  '):
+                    commandl2 = line.strip()                
+                    result[commandl1][commandl2] = []
+                else:
+                    commandl3 = line.strip()
+                    result[commandl1][commandl2].append(commandl3)
+                    
+        for key in result.keys():
+            if result[key] == {}:
+                result[key] = []
+    return(result)
+
+print(config_to_list('config_r1.txt'))
+

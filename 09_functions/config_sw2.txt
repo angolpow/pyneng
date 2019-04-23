@@ -26,6 +26,7 @@ interface FastEthernet0/0
  duplex auto
 !
 interface FastEthernet0/1
+ switchport access vlan 5
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 100,200
  switchport mode trunk
