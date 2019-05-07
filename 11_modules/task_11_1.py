@@ -36,14 +36,15 @@ def parse_cdp_neighbors(line):
 
     lineslist = line.split('\n')
     datadic = {}
-    devname = line[0: (line.find('sh') - 1)]
+    devname = line[0: (line.find('sh') - 1)].strip()
+
 
 
     for i in lineslist:
         if 'Fa' in i or 'Gi' in i or 'Eth' in i:
-            datalist = i.split('  ')
+            datalist = i.split(' ')
             datalist = [ i.strip().replace(' ', '') for i in datalist if i != '' ]
-            datadic[( devname, datalist[1] )] = ( datalist[0], datalist[-1] )
+            datadic[( devname, datalist[1] + datalist[2] )] = ( datalist[0], datalist[-2] + datalist[-1] )
     return(datadic)
 
 #with open('sw1_sh_cdp_neighbors.txt') as file:

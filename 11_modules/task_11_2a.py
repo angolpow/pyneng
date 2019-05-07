@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Задание 11.2a
@@ -32,3 +33,18 @@
 > pip install graphviz
 
 '''
+import draw_network_graph
+from task_11_1 import parse_cdp_neighbors
+topolist = {}
+temp = {}
+conflist = ['sh_cdp_n_sw1.txt', 'sh_cdp_n_r1.txt', 'sh_cdp_n_r2.txt', 'sh_cdp_n_r3.txt']
+
+for i in conflist:
+    with open(i) as file:
+        temp = file.read()
+    current = parse_cdp_neighbors(temp)
+    for j in current.keys():
+        if topolist.get(current[j]) != j or topolist.get(current[j]) == 'None':
+            topolist.update({(j): (current[j]) })
+print(topolist)
+draw_network_graph.draw_topology(topolist, output_filename='test2a')
